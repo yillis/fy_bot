@@ -7,7 +7,8 @@ _PROBLEMS = {
     '无法上网': {
         ('网络', 0.3),
         ('无法上网', 100),
-        ('连不上WIFI', 0.5)
+        ('连不上WIFI', 0.5),
+        ('上不了网', 100)
     }
 }
 
@@ -16,9 +17,9 @@ async def evaluate(text: str) -> str:
     dic = dict()
     for problem in _PROBLEMS:
         for key_word, weight in _PROBLEMS[problem]:
-            if text.find(key_word):
-                if key_word in dic:
-                    dic[key_word] += weight
+            if text.find(key_word) != -1:
+                if problem in dic:
+                    dic[problem] += weight
                 else:
-                    dic[key_word] = weight
-    return max(dic, key=dic.get)
+                    dic[problem] = weight
+    return None if len(dic) == 0 else max(dic, key=dic.get)
