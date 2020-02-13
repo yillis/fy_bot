@@ -1,3 +1,5 @@
+from awesome.util.sqlite import SQLClient
+
 PROBLEM_DB_NAME = 'problem.db'
 METHOD_DB_NAME = 'method.db'
 ASK_KEYWORD = [
