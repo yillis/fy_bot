@@ -1,11 +1,12 @@
-from awesome.util.sqlite import SQLClient
+import awesome.util.sqlite as sqlite
 
 PROBLEM_DB_NAME = 'problem.db'
-METHOD_DB_NAME = 'method.db'
-ASK_KEYWORD = [
-    '怎么办'
+KEYWORD_DB_NAME = 'keyword.db'
+ASK_KEYWORDS = [
+    '怎么办',
+    '坏了'
 ]
-ADD_KEYWORD = [
+ADD_KEYWORDS = [
     '解决方法',
     '解决方案'
 ]
