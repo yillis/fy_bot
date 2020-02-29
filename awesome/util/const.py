@@ -1,12 +1,5 @@
 import awesome.util.sqlite as sqlite
 
-PROBLEM_DB_NAME = 'problem.db'
-KEYWORD_DB_NAME = 'keyword.db'
-ASK_KEYWORDS = [
-    '怎么办',
-    '坏了'
-]
-ADD_KEYWORDS = [
-    '解决方法',
-    '解决方案'
-]
+TB_NAME = 'fybot.db'
+ASK_KEYWORD = sqlite.get_ask_keyword()
+UPDATE_KEYWORD = sqlite.get_update_keyword()
