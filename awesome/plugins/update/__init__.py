@@ -4,15 +4,16 @@ from nonebot import on_natural_language
 from nonebot import NLPSession
 from nonebot import IntentCommand
 
+import awesome.plugins.update.data_source
 from awesome.util import const
-from awesome.util import sqlite
+from awesome.util import fybot_sqlite
 
 
 @on_command('update', aliases=['update', ])
 async def update(session: CommandSession):
     problem_name = session.get('problem_name', prompt='没有找到你所描述的问题')
     method = session.get('method', prompt='没有找到你所描述的问题')
-    await sqlite.update_method(problem_name, method)
+    await awesome.plugins.update.data_source.update_method(problem_name, method)
     await session.send('添加成功')
 
 

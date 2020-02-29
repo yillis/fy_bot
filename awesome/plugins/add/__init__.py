@@ -1,14 +1,15 @@
 from nonebot import on_command
 from nonebot import CommandSession
 
-from awesome.util import sqlite
+import awesome.plugins.add.data_source
+from awesome.util import fybot_sqlite
 
 
 @on_command('add', aliases=['add', ])
 async def add(session: CommandSession):
     problem_name = session.get('problem_name', prompt='没有找到你所描述的问题')
     keyword = session.get('keyword', prompt='没有找到你所描述的方法')
-    await sqlite.add_keyword(problem_name, keyword)
+    await awesome.plugins.add.data_source.add_keyword(problem_name, keyword)
     await session.send('添加成功')
 
 

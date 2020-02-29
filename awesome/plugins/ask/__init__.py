@@ -4,14 +4,14 @@ from nonebot import on_natural_language
 from nonebot import NLPSession
 from nonebot import IntentCommand
 
+import awesome.plugins.ask.data_source
 from awesome.util import const
-from awesome.util import sqlite
 
 
 @on_command('ask', aliases=['ask', ])
 async def ask(session: CommandSession):
     problem_name = session.get('problem', prompt='请再详细描述一下你的电脑问题，如果还是不行请找管理员哦')
-    method = await sqlite.get_method(problem_name)
+    method = await awesome.plugins.ask.data_source.get_method(problem_name)
     if not method:
         method = "没有找到解决方法哦，请联系管理员添加解决方法"
     await session.send(method)
@@ -19,7 +19,7 @@ async def ask(session: CommandSession):
 
 @ask.args_parser
 async def _(session: CommandSession):
-    problem = await sqlite.get_ask_problem(session.current_arg_text)
+    problem = await awesome.plugins.ask.data_source.get_ask_problem(session.current_arg_text)
     print(problem)
     if problem:
         session.state['problem'] = problem
