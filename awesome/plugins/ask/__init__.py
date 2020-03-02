@@ -5,7 +5,6 @@ from nonebot import NLPSession
 from nonebot import IntentCommand
 
 import awesome.plugins.ask.data_source
-from awesome.util import const
 
 
 @on_command('ask', aliases=['ask', ])
@@ -20,16 +19,15 @@ async def ask(session: CommandSession):
 @ask.args_parser
 async def _(session: CommandSession):
     problem = await awesome.plugins.ask.data_source.get_ask_problem(session.current_arg_text)
-    print(problem)
     if problem:
         session.state['problem'] = problem
 
 
-@on_natural_language(keywords=[const.ASK_KEYWORD])
-async def _(session: NLPSession):
-    probability = 0.0
-    one = 100.0 / len(const.ASK_KEYWORD)
-    for keywords in const.ASK_KEYWORD:
-        if session.msg_text.find(keywords) != -1:
-            probability += one
-    return IntentCommand(probability, 'ask', current_arg=session.msg_text)
+# @on_natural_language(keywords=[const.ASK_KEYWORD])
+# async def _(session: NLPSession):
+#     probability = 0.0
+#     one = 100.0 / len(const.ASK_KEYWORD)
+#     for keywords in const.ASK_KEYWORD:
+#         if session.msg_text.find(keywords) != -1:
+#             probability += one
+#     return IntentCommand(probability, 'ask', current_arg=session.msg_text)

@@ -1,9 +1,7 @@
 import sqlite3
 import contextlib
 import pickle
-
-_TB_NAME = 'repair_msg'
-_DB_NAME = 'fybot.db'
+from config import *
 
 
 class SQLClient(object):
@@ -18,7 +16,7 @@ class SQLClient(object):
     data: [(keyword, weight = 1),]
     """
 
-    def __init__(self, db_name: str = _DB_NAME, tb_name: str = _TB_NAME):
+    def __init__(self, db_name: str = DB_NAME, tb_name: str = TB_NAME):
         self._db_name = db_name
         self._tb_name = tb_name
 
@@ -26,12 +24,11 @@ class SQLClient(object):
     async def _connect(self):
         """
         connect to the db
-        :return:
         """
         self._conn = sqlite3.connect(self._db_name)
         self._cursor = self._conn.cursor()
         self._cursor.execute(
-            """CREATE TABLE IF NOT EXISTS %s (name text primary key not null, data blob, method str)""" % self.tb_name)
+            """CREATE TABLE IF NOT EXISTS %s (name text primary key not null, data blob, method str)""" % self._tb_name)
         yield
         self._conn.commit()
         self._cursor.close()

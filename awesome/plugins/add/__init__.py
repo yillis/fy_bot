@@ -2,7 +2,6 @@ from nonebot import on_command
 from nonebot import CommandSession
 
 import awesome.plugins.add.data_source
-from awesome.util import fybot_sqlite
 
 
 @on_command('add', aliases=['add', ])

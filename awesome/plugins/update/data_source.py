@@ -1,4 +1,4 @@
-from awesome.util.fybot_sqlite import SQLClient
+from awesome.util.repair_sqlite import SQLClient
 
 
 async def get_problem_and_method(text: str) -> (str, str):

@@ -1,6 +1,6 @@
 import awesome.plugins.ask.data_source
 import awesome.plugins.update.data_source
-import awesome.util.fybot_sqlite as sqlite
+import awesome.util.repair_sqlite as sqlite
 
 TB_NAME = 'fybot.db'
 ASK_KEYWORD = awesome.plugins.ask.data_source.get_ask_keyword()

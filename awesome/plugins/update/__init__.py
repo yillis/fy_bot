@@ -5,8 +5,6 @@ from nonebot import NLPSession
 from nonebot import IntentCommand
 
 import awesome.plugins.update.data_source
-from awesome.util import const
-from awesome.util import fybot_sqlite
 
 
 @on_command('update', aliases=['update', ])

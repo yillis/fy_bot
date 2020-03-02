@@ -6,9 +6,5 @@ SUPERUSERS = {
 }
 
 # new config
-DB_HOST = '47.101.150.56'
-DB_PORT = 3306
-DB_USER = 'nonebot'
-DB_PASSWD = 'fynonebot'
-DB_CHARSET = 'utf8'
-
+TB_NAME = 'repair_msg'
+DB_NAME = 'fybot.db'

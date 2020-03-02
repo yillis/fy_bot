@@ -1,8 +1,7 @@
-from awesome.util.fybot_sqlite import SQLClient, _DB_NAME
+from awesome.util.repair_sqlite import SQLClient, DB_NAME
 
 
 async def get_ask_problem(text: str) -> str:
-    """"""
     data = await get_ask_data()
     dic = {}
     for problem in data:
@@ -18,11 +17,11 @@ async def get_method(problem: str) -> str:
     return await sqlite.method_query(problem)
 
 
-async def get_ask_data():
-    sqlite = SQLClient(_DB_NAME)
+async def get_ask_data() -> dict:
+    sqlite = SQLClient(DB_NAME)
     return await sqlite.name_and_data_query()
 
 
-async def get_ask_keyword():
-    sqlite = SQLClient(_DB_NAME)
+async def get_ask_keyword() -> list:
+    sqlite = SQLClient(DB_NAME)
     return await sqlite.show_problems()
